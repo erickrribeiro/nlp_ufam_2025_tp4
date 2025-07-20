@@ -7,7 +7,7 @@ https://docs.crewai.com/en/concepts/agents#direct-code-definition
 import os
 from crewai import Agent
 
-from knowledge.web import faq_knowledge_source
+from knowledge.web import faq_knowledge_source, nextjs_knowledge_source, word_embeddings_knowledge_source
 
 style = Agent(
     role='Estilo Editorial',
@@ -18,7 +18,7 @@ style = Agent(
         "2. Retorne um conjunto de instruções e orientações sobre tom, humor, vocabulário e gramática, para guiar o Planejador e o Redator de Conteúdo na produção do artigo."
     ),
     llm=os.getenv('MODEL'),
-    knowledge_sources=[faq_knowledge_source],
+    knowledge_sources=[word_embeddings_knowledge_source],
     allow_delegation=False,
     verbose=True
 )
@@ -63,6 +63,7 @@ writer = Agent(
         "O artigo final deve estar em formato Markdown, compatível com o Jekyll, com tempo estimado de leitura entre 7 e 12 minutos."
     ),
     llm=os.getenv('MODEL'),
+    knowledge_sources=[word_embeddings_knowledge_source],
     allow_delegation=False,
     verbose=True
 )

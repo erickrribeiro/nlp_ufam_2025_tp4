@@ -1,54 +1,75 @@
-# Nlp012025 Crew
+# Trabalho prático - Agente autonômos com LLMs 🚀
 
-Welcome to the Nlp012025 Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Bem-vindo ao projeto `NlP-01-2025`, desenvolvido no contexto do trabalho prático da disciplina de NLP de 2025, ministrada no [Programa de Pós-Graduação em Informática (PPGI)](https://ppgi.ufam.edu.br/). Este projeto explora a construção de sistemas baseados em agentes autônomos orquestrados por LLMs, com suporte a ferramentas externas como RAG (Recuperação de Informação) e e chamadas de APIs externas.
 
-## Installation
+A solução utiliza o framework [crewAI](https://www.crewai.com/), que facilita a criação e coordenação de múltiplos agentes colaborativos para resolver tarefas complexas de forma distribuída.
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+## 🎯 Detalhes
 
-First, if you haven't already, install uv:
+Este respositório contém um sistema de agentes autônomos que colaboram entre si para gerar uma postagem para o um blog fictício, a partir de um tema e uma base de conhecimento fornecida. O sistema usa:
+
+- Usar RAG para consultar/colectar informações em bases de dados, recurso [Knowledge](https://docs.crewai.com/en/concepts/knowledge).
+- Utilizar a ferramenta `SerperDevTool` para consultar informações adicionais na busca do Google.
+- O conteúdo final é o arquivo `output/review_final_blog_post.md`, um post no formato da ferramenta [Jekyll](https://jekyllrb.com/) pronto para publicação.
+
+## 🛠️ Instalação
+
+O projeto requer `Python >=3.10 e <3.14`. Utilizamos o gerenciador de pacotes uv para facilitar a instalação.
+
+1. Instale o uv:
 
 ```bash
 pip install uv
 ```
 
-Next, navigate to your project directory and install the dependencies:
+2. Instale as dependências do projeto:
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+```bash
+uv pip install -r requirements.txt
+````
+
+Ou, se estiver usando o CLI do crewAI:
+
 ```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+## ⚙️ Configuração
 
-- Modify `src/nlp_01_2025/config/agents.yaml` to define your agents
-- Modify `src/nlp_01_2025/config/tasks.yaml` to define your tasks
-- Modify `src/nlp_01_2025/crew.py` to add your own logic, tools and specific args
-- Modify `src/nlp_01_2025/main.py` to add custom inputs for your agents and tasks
+Crie um arquivo `.env`, baseado no arquivo `.env.template`, na raiz do projeto e adicione sua chave da OpenAI:
 
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
+```ini
+MODEL=gpt-4.1
+OPENAI_API_KEY=
+SERPAPI_API_KEY=
 ```
 
-This command initializes the nlp_01_2025 Crew, assembling the agents and assigning them tasks as defined in your configuration.
+Para mais informações sobre o funcionamento do projeto, consulte:
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+- **Agentes**: src/nlp_01_2025/config/agents.py
+- **Tarefas**: src/nlp_01_2025/config/tasks.py
+- **Pipeline e lógica**: src/nlp_01_2025/crew.py
+- **Entrada e execução personalizada**: src/nlp_01_2025/main.py
 
-## Understanding Your Crew
+## ▶️ Execução
+Para iniciar a orquestração dos agentes, execute no terminal:
 
-The nlp_01_2025 Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+```bash
+crewai run
+```
 
-## Support
+Esse comando inicializa os agentes definidos e os coloca para executar suas tarefas colaborativamente, com base nas configurações do projeto. Os resultados serão gerados na pasta output/.
 
-For support, questions, or feedback regarding the Nlp012025 Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+## 📁 Estrutura do Projeto
 
-Let's create wonders together with the power and simplicity of crewAI.
+```bash
+nlp_01_2025/
+├── knowledge/
+├── config/
+│   ├── agents.yaml         # Definição dos agentes
+│   └── tasks.yaml          # Tarefas atribuídas aos agentes
+├── crew.py                 # Composição e lógica dos agentes
+├── main.py                 # Script principal de execução
+├── tools/                  # Ferramentas personalizadas (RAG, APIs, etc.)
+├── output/                 # Resultados gerados (ex: blogpost final)
+└── ...

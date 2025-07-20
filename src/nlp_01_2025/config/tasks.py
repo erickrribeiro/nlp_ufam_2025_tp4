@@ -1,4 +1,6 @@
 from crewai import Task
+
+from src.nlp_01_2025.tools import serper
 from src.nlp_01_2025.config.agents import planner, writer, editor
 
 
@@ -14,9 +16,10 @@ plan = Task(
         "\n1. Estrutura detalhada com tópicos e subtópicos sugeridos;"
         "\n2. Análise do público-alvo (nível técnico, necessidades, dores e objetivos);"
         "\n3. Lista de palavras-chave de SEO a serem utilizadas no texto;"
-        "\n4. Sugestão de exemplo prático de código para ilustrar o tema;"
-        "\n5. Fontes confiáveis (links, blogs, artigos, documentações) que embasam o conteúdo;"
-        "\n6. Observações adicionais para orientar o Redator de Conteúdo."
+        "\n4. Lista de links externos úteis e confiáveis, que complementem o conteúdo;"
+        "\n5. Sugestão de exemplo prático de código para ilustrar o tema;"
+        "\n6. Fontes confiáveis (links, blogs, artigos, documentações) que embasam o conteúdo;"
+        "\n7. Observações adicionais para orientar o Redator de Conteúdo."
     ),
     agent=planner,
     output_file='output/content_plan.md',
@@ -34,11 +37,11 @@ write = Task(
         "Um artigo completo e detalhado em formato Markdown, contendo:"
         "\n- Seções bem definidas com no mínimo 3 parágrafos cada;"
         "\n- Códigos explicados em blocos pequenos, com exemplos práticos e conjuntos de dados fictícios;"
-        "\n- Imagens relevantes extraídas da base de conhecimento, se disponíveis;"
         "\n- Links externos úteis e confiáveis, que complementem o conteúdo;"
         "\n- Conclusão clara, envolvente e baseada nos aprendizados do artigo;"
         "\n- Formatação compatível com Jekyll (sem blocos de código com crases triplas e com front matter opcional)."
     ),
+    tools=[serper],
     agent=writer,
     markdown=True,
     output_file='output/draft_blog_post.md',
@@ -59,6 +62,6 @@ edit = Task(
     ),
     agent=editor,
     markdown=True,
-    output_file='review_final_blog_post.md',
+    output_file='output/review_final_blog_post.md',
     verbose=True
 )

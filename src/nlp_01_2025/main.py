@@ -18,7 +18,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'Introdução a RAG com exemplos',
+        # 'topic': 'Introdução a NextJs com exemplos',
+        'topic': 'Introdução a Word Embeddings com exemplos',
         'current_year': str(datetime.now().year),
         'knowledge_sources': [
             "https://neptune.ai/blog/tokenization-in-nlp",
