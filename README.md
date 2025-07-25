@@ -46,10 +46,10 @@ SERPAPI_API_KEY=
 
 Para mais informações sobre o funcionamento do projeto, consulte:
 
-- **Agentes**: src/nlp_01_2025/config/agents.py
-- **Tarefas**: src/nlp_01_2025/config/tasks.py
-- **Pipeline e lógica**: src/nlp_01_2025/crew.py
-- **Entrada e execução personalizada**: src/nlp_01_2025/main.py
+- **Agentes**: src/nlp_ufam/config/agents.py
+- **Tarefas**: src/nlp_ufam/config/tasks.py
+- **Pipeline e lógica**: src/nlp_ufam/crew.py
+- **Entrada e execução personalizada**: src/nlp_ufam/main.py
 
 ## ▶️ Execução
 Para iniciar a orquestração dos agentes, execute no terminal:
@@ -63,13 +63,14 @@ Esse comando inicializa os agentes definidos e os coloca para executar suas tare
 ## 📁 Estrutura do Projeto
 
 ```bash
-nlp_ufam/
+./
 ├── knowledge/
-├── config/
-│   ├── agents.yaml         # Definição dos agentes
-│   └── tasks.yaml          # Tarefas atribuídas aos agentes
-├── crew.py                 # Composição e lógica dos agentes
-├── main.py                 # Script principal de execução
-├── tools/                  # Ferramentas personalizadas (RAG, APIs, etc.)
-├── output/                 # Resultados gerados (ex: blogpost final)
-└── ...
+├── output/                 # Resultados gerados (ex: postagem final)
+├── src/nlp_ufam/
+|   ├── config/
+│   |    ├── agents.py         # Definição dos agentes
+│   |    └── tasks.py          # Tarefas atribuídas aos agentes
+|   ├── crew.py                # Composição e lógica dos agentes
+|   ├── knowledge.py           # Basese de conhecimentos disponíveis WEB e PDF
+|   ├── tools.pys              # Ferramentas personalizadas (acesso ao web com SerperDevTool)
+└── main.py                 # Script principal de execução

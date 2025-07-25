@@ -22,9 +22,7 @@ def run():
     """
 
     inputs = {
-        # 'topic': 'Impacto de Ferramentas de IA no desenvolvimento de Software',
-        # 'topic': 'Explicando o que é Análise de Sentimentos Baseada em Aspectos e onde aplicar',
-        'topic': 'O que é Similaridade Vetorial e por que ela importa no Machine Learning?',
+        'topic': 'Análise de Sentimentos Baseada em Aspectos',
         'current_year': str(datetime.now().year),
     }
     
