@@ -1,7 +1,7 @@
 [project]
-name = "nlp_01_2025"
+name = "nlp_ufam"
 version = "0.1.0"
-description = "nlp_01_2025 using crewAI"
+description = "nlp_ufam using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.14"
 dependencies = [
@@ -10,11 +10,8 @@ dependencies = [
 ]
 
 [project.scripts]
-nlp_01_2025 = "nlp_01_2025.main:run"
-run_crew = "nlp_01_2025.main:run"
-train = "nlp_01_2025.main:train"
-replay = "nlp_01_2025.main:replay"
-test = "nlp_01_2025.main:test"
+nlp_ufam = "nlp_ufam.main:run"
+run_crew = "nlp_ufam.main:run"
 
 [build-system]
 requires = ["hatchling"]

@@ -55,7 +55,7 @@ Para mais informações sobre o funcionamento do projeto, consulte:
 Para iniciar a orquestração dos agentes, execute no terminal:
 
 ```bash
-crewai run
+uv run main.py
 ```
 
 Esse comando inicializa os agentes definidos e os coloca para executar suas tarefas colaborativamente, com base nas configurações do projeto. Os resultados serão gerados na pasta output/.
@@ -63,7 +63,7 @@ Esse comando inicializa os agentes definidos e os coloca para executar suas tare
 ## 📁 Estrutura do Projeto
 
 ```bash
-nlp_01_2025/
+nlp_ufam/
 ├── knowledge/
 ├── config/
 │   ├── agents.yaml         # Definição dos agentes

@@ -2558,7 +2558,7 @@ wheels = [
 ]
 
 [[package]]
-name = "nlp-01-2025"
+name = "nlp-ufam"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

@@ -1,10 +1,15 @@
 from typing import List
 from crewai.knowledge.source.crew_docling_source import CrewDoclingSource
+from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 
-def web_knowledge_source(file_paths: List[str]) -> CrewDoclingSource:
+def init_web_knowledge_source(file_paths: List[str]) -> CrewDoclingSource:
     return CrewDoclingSource(file_paths=file_paths)
-    
-faq_knowledge_source = web_knowledge_source(
+
+def init_pdf_knowledge_source(file_paths: List[str]) -> PDFKnowledgeSource:
+    return PDFKnowledgeSource(file_paths=file_paths)
+
+
+raq_knowledge_source_template = init_web_knowledge_source(
     file_paths=[
         "https://medium.com/@lucascarrasquillaparra/chat-with-your-documents-tool-rag-vector-dbs-cosine-sim-claude-api-implementation-2312cf14c67a",
         "https://python.langchain.com/docs/tutorials/rag/",
@@ -12,7 +17,7 @@ faq_knowledge_source = web_knowledge_source(
     ]
 )
 
-nextjs_knowledge_source = web_knowledge_source(
+nextjs_knowledge_source_template = init_web_knowledge_source(
     file_paths=[
         "https://nextjs.org/docs/getting-started",
         "https://nextjs.org/docs/app/building-your-application/routing",
@@ -20,7 +25,7 @@ nextjs_knowledge_source = web_knowledge_source(
     ]
 )
 
-word_embeddings_knowledge_source = web_knowledge_source(
+word_embeddings_knowledge_source_template = init_web_knowledge_source(
     file_paths=[
         "https://medium.com/turing-talks/word-embedding-fazendo-o-computador-entender-o-significado-das-palavras-92fe22745057",
         "https://medium.com/@harsh.vardhan7695/a-comprehensive-guide-to-word-embeddings-in-nlp-ee3f9e4663ed",
